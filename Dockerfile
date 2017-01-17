@@ -1,9 +1,9 @@
-FROM centos:7
+FROM alpine:latest
 
-RUN yum install -y gcc libffi-devel python-devel openssl-devel epel-release
-RUN yum install python-pip -y
-RUN pip install --user azure-cli
+RUN apt-get update && apt-get install -y libssl-dev libffi-dev python-dev python-pip
 
-ENV PATH=$PATH:/root/.local/bin
+RUN curl -L https://aka.ms/InstallAzureCli | bash
 
-CMD /sbin/init
+ENTRYPOINT ["az"]
+
+tesaa
