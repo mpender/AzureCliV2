@@ -17,5 +17,5 @@ RUN pip install --user azure-cli
 
 ENV PATH=$PATH:/root/.local/bin/az
 
-CMD /sbin/init
-#ENTRYPOINT ["az"]
+#CMD /sbin/init
+ENTRYPOINT ["az"]
