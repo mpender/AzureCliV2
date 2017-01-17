@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-RUN echo http://dl-cdn.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories && apk update
+RUN echo http://dl-cdn.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories
 RUN apk add --update \
     openssl-dev \
     libffi-dev \
@@ -15,7 +15,7 @@ RUN pip install --upgrade pip
 
 RUN pip install --user azure-cli
 
-ENV PATH=$PATH:/root/.local/bin/az
+ENV PATH=$PATH:/root/.local/bin/
 
 #CMD /sbin/init
 ENTRYPOINT ["az"]
