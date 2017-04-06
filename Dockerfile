@@ -1,21 +1,11 @@
-FROM alpine:latest
+FROM mpender/ansible-docker
 
-RUN echo http://dl-cdn.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories
-RUN apk add --update \
-    openssl-dev \
-    libffi-dev \
-    python-dev \
-    py2-pip \
-    gcc \
-    musl-dev
-
-RUN pip install --upgrade pip
-
-#RUN curl -L https://aka.ms/InstallAzureCli | bash
-
+RUN yum install -y gcc libffi-devel python-devel openssl-devel epel-release jq
+RUN yum install python-pip -y
 RUN pip install --user azure-cli
 
-ENV PATH=$PATH:/root/.local/bin/
+ENV PATH=$PATH:/root/.local/bin
 
+#CMD /sbin/init
 #CMD /sbin/init
 ENTRYPOINT ["az"]
